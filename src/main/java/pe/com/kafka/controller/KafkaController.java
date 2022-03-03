@@ -19,20 +19,20 @@ import pe.com.kafka.service.KafkaProduce;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/banking-mobile")
+@RequestMapping("/kafka-microservice")
 public class KafkaController {
 	private static final Logger logger = LoggerFactory.getLogger(KafkaController.class);
     private final KafkaProduce kafkaProduce;
     private final StreamBridge streamBridge;
 
 
-    @GetMapping("/wallet/{numberPhone}")
+    @GetMapping("/purse/{numberPhone}")
     public void send(@PathVariable String numberPhone) {
     	kafkaProduce.sendMessage(numberPhone);
 
     }
 
-    @PostMapping("/wallet")
+    @PostMapping("/purse")
     public void send(@RequestBody Purse purse) {
     	kafkaProduce.sendMessage(purse);
     }

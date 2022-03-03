@@ -20,37 +20,37 @@ public class KafkaProduce {
     @Autowired
     public KafkaTemplate<String, String> stringKafkaTemplate;
     @Autowired
-    public KafkaTemplate<String, Purse> walletKafkaTemplate;
+    public KafkaTemplate<String, Purse> purseKafkaTemplate;
 
 
 
 
     public void sendMessage(String value) {
-        ListenableFuture<SendResult<String,String>> future = stringKafkaTemplate.send(Topic.INS_WALLET, value);
+        ListenableFuture<SendResult<String,String>> future = stringKafkaTemplate.send(Topic.INS_PURSE, value);
 
         future.addCallback(new ListenableFutureCallback() {
             @Override
             public void onFailure(Throwable ex) {
-                logger.info("Messages failed to push on topic: "+Topic.INS_WALLET);
+                logger.info("Messages failed to push on topic: " + Topic.INS_PURSE);
             }
             @Override
             public void onSuccess(Object result) {
-                logger.info("Messages successfully pushed on topic: "+Topic.INS_WALLET);
+                logger.info("Messages successfully pushed on topic: "+Topic.INS_PURSE);
             }
         });
     }
 
     public void sendMessage(Purse value) {
-        ListenableFuture<SendResult<String,Purse>> future = walletKafkaTemplate.send(Topic.INS_WALLET_JSON, value);
+        ListenableFuture<SendResult<String,Purse>> future = purseKafkaTemplate.send(Topic.INS_PURSE_JSON, value);
         future.addCallback(new ListenableFutureCallback() {
             @Override
             public void onFailure(Throwable ex) {
-                logger.info("Messages failed to push on topic: "+Topic.INS_WALLET_JSON);
+                logger.info("Messages failed to push on topic: "+ Topic.INS_PURSE_JSON);
             }
             @Override
             public void onSuccess(Object result) {
 
-                logger.info("Messages failed to push on topic: "+Topic.INS_WALLET_JSON);
+                logger.info("messages were not sent: "+Topic.INS_PURSE_JSON);
             }
         });
     }

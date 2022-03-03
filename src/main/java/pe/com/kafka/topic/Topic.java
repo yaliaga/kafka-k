@@ -1,9 +1,10 @@
 package pe.com.kafka.topic;
 
 public interface Topic {
-	String INS_WALLET="ins-wallet";
-    String INS_WALLET_JSON="ins-wallet-json";
-    String INS_ACCOUNT="ins-account";
-    String UPD_ACCOUNT="upd-account";
-    String LIST_ACCOUNT="lst-account";
+	String INS_PURSE="ins-purse";
+    String INS_PURSE_JSON="ins-purse-json";
+    String INS_ACCOUNTYANKI="ins-accountyanki";
+    String UPD_ACCOUNTYANKI="upd-accountyanki";
+    String LIST_ACCOUNTYANKI="lst-accountyanki";
+	
 }
